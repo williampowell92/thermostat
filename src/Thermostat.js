@@ -2,16 +2,14 @@
 
 function Thermostat() {
   const defaultMinimumTemperature = 10
-  const defaultMaximumTemperature = 25
   const defaultTemperature = 20
   this.temperature = defaultTemperature;
   this.minimumTemperature = defaultMinimumTemperature
-  this.maximumTemperature = defaultMaximumTemperature
   this.isPowerSaving = true
 }
 
 Thermostat.prototype.increaseTemperature = function() {
-  if (this.temperature >= this.maximumTemperature) {
+  if (this.temperature >= this._maximumTemperature()) {
     throw new Error("Maximum temperature reached")
   }
 
@@ -31,5 +29,8 @@ Thermostat.prototype.togglePowerSaving = function() {
 }
 
 Thermostat.prototype._maximumTemperature = function() {
-  return 25
+  const powerSavingOnMaxTemp = 25
+  const powerSavingOffMaxTemp = 32
+
+  return (this.isPowerSaving ? powerSavingOnMaxTemp : powerSavingOffMaxTemp);
 }

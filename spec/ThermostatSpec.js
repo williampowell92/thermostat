@@ -5,7 +5,8 @@ describe("Thermostat", function() {
   const defaultTemperature = 20
   const incrementValue = 1
   const minimumTemperature = 10
-  const maximumTemperature = 25
+  const powerSavingOnMaxTemp = 25
+  const powerSavingOffMaxTemp = 32
 
   beforeEach(function() {
     thermostat = new Thermostat()
@@ -23,11 +24,19 @@ describe("Thermostat", function() {
       expect(thermostat.temperature).toEqual(defaultTemperature+incrementValue)
     });
 
-    it("cannot go above maximum temperature", function() {
-      thermostat.temperature = maximumTemperature
+    it("cannot go above maximum temperature in power saving mode", function() {
+      thermostat.temperature = powerSavingOnMaxTemp
       expect(function() {
         thermostat.increaseTemperature()
       }).toThrowError("Maximum temperature reached")
+    });
+
+    it("can go above default max temp out of power saving mode", function() {
+      thermostat.isPowerSaving = false
+      thermostat.temperature = powerSavingOnMaxTemp
+      expect(function() {
+        thermostat.increaseTemperature()
+      }).not.toThrowError("Maximum temperature reached")
     });
   });
 
