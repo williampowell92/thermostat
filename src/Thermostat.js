@@ -1,18 +1,20 @@
 "use strict";
 
 function Thermostat() {
+  const defaultMinimumTemperature = 10
   const defaultTemperature = 20
-  const defaultValue = 1
   this.temperature = defaultTemperature;
-  this.incrementValue = defaultValue;
+  this.minimumTemperature = defaultMinimumTemperature
 }
 
 Thermostat.prototype.increaseTemperature = function() {
-  // this.temperature++
-  this.temperature = this.temperature + this.incrementValue
+  this.temperature++
 }
 
 Thermostat.prototype.decreaseTemperature = function() {
-  // this.temperature--
-  this.temperature = this.temperature - this.incrementValue
+  if (this.temperature <= this.minimumTemperature) {
+    throw new Error("Minimum temperature reached")
+  }
+
+  this.temperature--
 }
