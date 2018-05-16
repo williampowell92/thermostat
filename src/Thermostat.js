@@ -25,6 +25,10 @@ Thermostat.prototype.decreaseTemperature = function() {
 
   this.temperature--
 }
+
+Thermostat.prototype.togglePowerSaving = function() {
+  this.isPowerSaving = !this.isPowerSaving
+}
 //
 // isPowerSaving = true/false
 //

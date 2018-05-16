@@ -50,4 +50,16 @@ describe("Thermostat", function() {
       expect(thermostat.isPowerSaving).toBeTruthy()
     });
   });
+
+  describe("togglePowerSaving", function(){
+    it("switches power saving to false", function(){
+      thermostat.togglePowerSaving()
+      expect(thermostat.isPowerSaving).toBeFalsy()
+    });
+    it("switches power saving mode to true", function(){
+      thermostat.isPowerSaving = false
+      thermostat.togglePowerSaving()
+      expect(thermostat.isPowerSaving).toBeTruthy()
+    });
+  });
 });
