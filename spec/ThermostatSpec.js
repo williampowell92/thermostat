@@ -5,6 +5,7 @@ describe("Thermostat", function() {
   const defaultTemperature = 20
   const incrementValue = 1
   const minimumTemperature = 10
+  const maximumTemperature = 25
 
   beforeEach(function() {
     thermostat = new Thermostat()
@@ -21,6 +22,13 @@ describe("Thermostat", function() {
       thermostat.increaseTemperature()
       expect(thermostat.temperature).toEqual(defaultTemperature+incrementValue)
     });
+
+    it("cannot go above maximum temperature", function() {
+      thermostat.temperature = maximumTemperature
+      expect(function() {
+        thermostat.increaseTemperature()
+      }).toThrowError("Maximum temperature reached")
+    });
   });
 
   describe("decreaseTemperature", function() {
@@ -30,10 +38,16 @@ describe("Thermostat", function() {
     });
 
     it("cannot go below minimum temperature", function() {
-      thermostat.temperature = 10
+      thermostat.temperature = minimumTemperature
       expect(function() {
         thermostat.decreaseTemperature()
       }).toThrowError("Minimum temperature reached")
+    });
+  });
+
+  describe("isPowerSaving", function() {
+    it("default is power saving mode", function() {
+      expect(thermostat.isPowerSaving).toBeTruthy()
     });
   });
 });
