@@ -90,4 +90,26 @@ describe("Thermostat", function() {
       expect(thermostat.temperature).toEqual(defaultTemperature)
     });
   });
+
+  describe("energyUsage", function() {
+    it("is low when temperature is below 18", function(){
+      for (var temp = minimumTemperature; temp < 18; temp++) {
+        thermostat.temperature = temp
+        expect(thermostat.energyUsage()).toEqual("low-usage")
+      };
+    });
+    it("is medium when the temperature is between 18 and 24", function (){
+      for (var temp = 18; temp < 25; temp++) {
+        thermostat.temperature = temp
+        expect(thermostat.energyUsage()).toEqual("medium-usage")
+      };
+    });
+    it("is high when the temperature is 25 or above", function(){
+      thermostat.isPowerSaving = false
+      for (var temp = 25; temp < powerSavingOffMaxTemp; temp++) {
+        thermostat.temperature = temp
+        expect(thermostat.energyUsage()).toEqual("high-usage")
+      };
+    });
+  });
 });
