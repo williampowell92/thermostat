@@ -82,4 +82,12 @@ describe("Thermostat", function() {
       expect(thermostat._maximumTemperature()).toEqual(32)
     });
   });
+
+  describe("resetTemperature", function() {
+    it("resets the temperature to default", function() {
+      thermostat.temperature = powerSavingOnMaxTemp
+      thermostat.resetTemperature()
+      expect(thermostat.temperature).toEqual(defaultTemperature)
+    });
+  });
 });
