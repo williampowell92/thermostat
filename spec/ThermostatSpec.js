@@ -46,20 +46,31 @@ describe("Thermostat", function() {
   });
 
   describe("isPowerSaving", function() {
-    it("default is power saving mode", function() {
+    it("default is power saving mode is on", function() {
       expect(thermostat.isPowerSaving).toBeTruthy()
     });
   });
 
   describe("togglePowerSaving", function(){
-    it("switches power saving to false", function(){
+    it("switches power saving to off", function(){
       thermostat.togglePowerSaving()
       expect(thermostat.isPowerSaving).toBeFalsy()
     });
-    it("switches power saving mode to true", function(){
+    it("switches power saving mode to on", function(){
       thermostat.isPowerSaving = false
       thermostat.togglePowerSaving()
       expect(thermostat.isPowerSaving).toBeTruthy()
+    });
+  });
+
+  describe("_maximumTemperature", function(){
+    it("is 25 in power saving mode", function(){
+      thermostat.isPowerSaving = true
+      expect(thermostat._maximumTemperature()).toEqual(25)
+    });
+    it("is 32 if power saving mode is off", function(){
+      thermostat.isPowerSaving = false
+      expect(thermostat._maximumTemperature()).toEqual(32)
     });
   });
 });
