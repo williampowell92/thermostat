@@ -1,3 +1,4 @@
+"use strict";
 
 $(document).ready(function() {
   var thermostat = new Thermostat
@@ -6,18 +7,6 @@ $(document).ready(function() {
   function updateTemperature() {
     $("#temperature").text(thermostat.temperature);
   };
-
-  function lowUsage() {
-    $("body").removeClass().addClass("low-usage")
-  }
-
-  function mediumUsage() {
-    $("body").removeClass().addClass("medium-usage")
-  }
-
-  function highUsage() {
-    $("body").removeClass().addClass("high-usage")
-  }
 
   function updateEnergyUsage() {
     if (thermostat.energyUsage() === "low-usage") {
@@ -28,8 +17,6 @@ $(document).ready(function() {
       $("body").removeClass().addClass("high-usage");
     }
   };
-
-
 
   $("#temperature-up").click(function() {
     thermostat.increaseTemperature()
@@ -54,18 +41,4 @@ $(document).ready(function() {
     updateTemperature()
     updateEnergyUsage()
   })
-
-  // $('#temperature-up').click(function() {
-  //   $("body").removeClass().addClass("high-usage");
-  // });
-  //
-  // $('#temperature-down').click(function() {
-  //   $("body").removeClass().addClass("low-usage")
-  // });
-  //
-  // $('#temperature-reset').click(function() {
-  //   $("body").removeClass().addClass("medium-usage")
-  // });
-
-  // $("#temperature").html(thermostat.temperature);
 });
