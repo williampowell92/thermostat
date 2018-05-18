@@ -19,14 +19,14 @@ body {
 button {
   -webkit-animation: rainbow 0.5s infinite;
   background-color: #000000;
-   border: none;
-   color: white;
-   padding: 15px 32px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   border-radius: 50px;
-     font-size: 75px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50px;
+  font-size: 75px;
 }
 
 .temperature {
@@ -35,12 +35,10 @@ button {
 }
 
 .rainbow {
-  /* Chrome, Safari, Opera */
  -webkit-animation: rainbow 0.5s infinite;
 
 }
 
-/* Chrome, Safari, Opera */
 @-webkit-keyframes rainbow{
     20%{color: red;}
     40%{color: yellow;}
