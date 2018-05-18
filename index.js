@@ -3,6 +3,7 @@
 $(document).ready(function() {
   var thermostat = new Thermostat
   updateTemperature();
+  updateLocalTemperature("Lisbon");
 
   function updateTemperature() {
     $("#temperature").text(thermostat.temperature);
@@ -42,10 +43,14 @@ $(document).ready(function() {
     updateEnergyUsage()
   })
 
-  var myData = JSON.parse(data);
-  var APIKey = myData[0]["APIKey"]
+  function updateLocalTemperature(city) {
+    var myData = JSON.parse(data);
+    var APIKey = myData[0]["APIKey"]
 
-  $.get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${APIKey}`, function(response) {
-    $("#currenttemp").text(response.main.temp);
-  });
+    $.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}`, function(response) {
+      $("#currenttemp").text(response.main.temp);
+    });
+  }
+
+
 });
