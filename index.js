@@ -52,5 +52,9 @@ $(document).ready(function() {
     });
   }
 
+  $("#city").change(function(city) {
+    updateLocalTemperature($("#city").val())
+  });
+
 
 });
