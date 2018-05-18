@@ -41,4 +41,11 @@ $(document).ready(function() {
     updateTemperature()
     updateEnergyUsage()
   })
+
+  var myData = JSON.parse(data);
+  var APIKey = myData[0]["APIKey"]
+
+  $.get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${APIKey}`, function(response) {
+    $("#currenttemp").text(response.main.temp);
+  });
 });
