@@ -3,37 +3,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script src="https://code.jquery.com/jquery-3.2.0.min.js">console.log(0);</script>
-    <script type="text/javascript" src="lib/config.json">
-      var myData = JSON.parse(data);
-      console.log(1);
-      console.log(myData);
-      console.log(2);
-      debugger;
-      console.log(3);
-    </script>
-    <!-- <script>
-    $.get("https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=a3d9eb01d4de82b9b8d0849ef604dbed", function(response) {
-      console.log(env());
-      $("#currenttemp").text(response.main.temp);
-    });
-    </script> -->
     <title>Thermostat</title>
     <link rel="stylesheet" type="text/css" href="public/styles.css">
+    <script src="lib/config.json"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="src/Thermostat.js"></script>
     <script src="index.js"></script>
   </head>
   <body class="medium-usage">
     <center>
-    <h1 class="rainbow temperature" id="temperature">Temperature</h1>
+    <h1 class="rainbow temperature"><span id="temperature">Temperature</span> Celsius</h1>
     <p>
       <button id="temperature-up">up</button>
       <button id="temperature-down">down</button>
       <button id="power-saving">power-saving</button>
       <button id="temperature-reset">reset</button>
     </p>
-    <h2 id="currenttemp">temperature</h2>
+    <h2 class="rainbow temperature"><span id="currenttemp">temperature</span> Kelvin</h2>
   </center>
   </body>
 </html>
